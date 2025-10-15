@@ -1,6 +1,6 @@
 terminal > :php artisan make:middleware EnsureTokenIsValid
 
-//sample middleware
+//sample middleware (EnsureTokenIsValid.php)
 public function handle(Request $request, Closure $next): Response
 {
 $token = "secret";
@@ -12,6 +12,14 @@ return $next($request);
 }
 
 
-//Global middleware
-bootstrap/app.php file: use App\Http\Middleware\EnsureTokenIsValid;
+//Global middleware (app.php)
+bootstrap/app.php file:
+use App\Http\Middleware\EnsureTokenIsValid;
 ->withMiddleware(function (Middleware $middleware) { $middleware->append(EnsureTokenIsValid::class); // apply all the route. 
+
+
+//assign specific middleware (web.php)
+use App\Http\Middleware\EnsureTokenIsValid;
+Route::post('/form', function () {
+    return 'Access Denied';
+}) -> middleware(EnsureTokenIsValid::class);
