@@ -1,6 +1,7 @@
 terminal > :php artisan make:middleware EnsureTokenIsValid
 
 //sample middleware
+public function handle(Request $request, Closure $next): Response
 {
 $token = "secret";
 if($token !== $request->input('token'))
@@ -9,6 +10,7 @@ return redirect('home');
 }
 return $next($request);
 }
+
 
 //Global middleware
 bootstrap/app.php file: use App\Http\Middleware\EnsureTokenIsValid;
