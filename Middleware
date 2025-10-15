@@ -1,0 +1,15 @@
+terminal > :php artisan make:middleware EnsureTokenIsValid
+
+//sample middleware
+{
+$token = "secret";
+if($token !== $request->input('token'))
+{
+return redirect('home');
+}
+return $next($request);
+}
+
+//Global middleware
+bootstrap/app.php file: use App\Http\Middleware\EnsureTokenIsValid;
+->withMiddleware(function (Middleware $middleware) { $middleware->append(EnsureTokenIsValid::class);
