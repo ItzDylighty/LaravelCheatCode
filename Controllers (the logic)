@@ -1,1 +1,31 @@
+php artisan make:controller ControllerName
 
+php artisan make:controller ControllerName --resource //generate methods CRUD
+
+//Naming convention guide 
+index – display list
+show – display single record
+create – show form to add new record
+edit – show form to edit record
+store – save new record
+update – update existing record
+destroy – delete record
+
+
+ControllerName.php
+<?php
+namespace App\Http\Controllers;
+use Illuminate\Http\Request;
+class HomeController extends Controller
+{
+    public function index() //tatawagin
+    {
+        return view('welcome');
+    }
+}
+
+
+//include on web.php
+use App\Http\Controller\Controllername
+
+Route::get('/', [MainController::class, 'index']);
