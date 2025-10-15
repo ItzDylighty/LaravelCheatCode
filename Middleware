@@ -12,4 +12,4 @@ return $next($request);
 
 //Global middleware
 bootstrap/app.php file: use App\Http\Middleware\EnsureTokenIsValid;
-->withMiddleware(function (Middleware $middleware) { $middleware->append(EnsureTokenIsValid::class);
+->withMiddleware(function (Middleware $middleware) { $middleware->append(EnsureTokenIsValid::class); // apply all the route. 
