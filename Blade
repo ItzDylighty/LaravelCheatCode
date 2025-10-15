@@ -1,0 +1,54 @@
+//isset
+@isset($records)
+// $records is defined and is not null...
+@endisset
+
+//empty
+@empty($records)
+// $records is "empty"...
+@endempty
+
+//if-else
+@if (count($records) === 1)
+I have one record!
+@elseif (count($records) > 1)
+I have multiple records!
+@else
+I don't have any records!
+@endif
+
+//auth
+@auth
+// The user is authenticated...
+@endauth
+@guest
+// The user is not authenticated...
+@endguest
+
+//switch
+@switch($i)
+@case(1)
+First case...
+@break
+@case(2)
+Second case...
+@break
+@default
+Default case...
+@endswitch
+
+
+//for 
+@for ($i = 0; $i < 10; $i++)
+The current value is {{ $i }}
+@endfor
+
+//while
+@while (true)
+<p>I'm looping forever.</p>
+@endwhile
+
+//foreach
+@foreach ($users as $user)
+<p>This is user {{ $user->id }}</p>
+@endforeach
